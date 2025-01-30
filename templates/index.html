@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias Recentes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Notícias Recentes</h1>
+    </header>
+    <main>
+        {% for site, noticias in noticias.items() %}
+        <section>
+            <h2>{{ site.upper() }}</h2>
+            <ul>
+                {% if noticias %}
+                    {% for noticia in noticias %}
+                    <li>
+                        <a href="{{ noticia['link'] }}" target="_blank">{{ noticia['titulo'] }}</a>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <p>Sem notícias disponíveis.</p>
+                {% endif %}
+            </ul>
+        </section>        
+        {% endfor %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Bot de Notícias</p>
+    </footer>
+</body>
+</html>
